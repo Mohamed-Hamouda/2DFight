@@ -186,6 +186,7 @@ public class PlayerControl : MonoBehaviour {
         {
             GameObject pr = Instantiate(Projectile, transform.position, Quaternion.identity) as GameObject;
             pr.transform.parent = transform;
+            Destroy(pr, 2);
             Vector3 nrDir = new Vector3(enemy.position.x, transform.position.y, 0);
             Vector3 dir = nrDir - transform.position;
             pr.GetComponent<Rigidbody2D>().AddForce(dir * 10, ForceMode2D.Impulse);
