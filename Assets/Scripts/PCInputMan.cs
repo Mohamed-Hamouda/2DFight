@@ -17,6 +17,7 @@ public class PCInputMan : InputMan {
             Attacks[i] = Input.GetButtonDown("Attack" + (i+1) + PlayerNum);
             //print("Attack" + (i + 1) + PlayerNum);
         }
+        Special = Attacks[0] && Attacks[1];
 	}
 
     //public PCInputMan(int playerNum, int attacksCount)

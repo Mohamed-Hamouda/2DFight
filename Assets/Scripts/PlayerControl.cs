@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
     public int PlayerNum = 1;
+    public GameBoxInputMan inpt;
     Transform enemy;
     public Collider2D UpperBody;
     public Collider2D LowerBody;
@@ -40,7 +41,7 @@ public class PlayerControl : MonoBehaviour {
     float[] attackTimer ;
     int[] timesPressed ;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         rig2D = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         jumpForce = JumpForce;
@@ -61,6 +62,12 @@ public class PlayerControl : MonoBehaviour {
             //inputManager = new PCInputMan(PlayerNum, AttackCount);
             inputManager.AttacksCount = AttackCount;
             ((PCInputMan)inputManager).PlayerNum = PlayerNum;
+        }
+        else
+        {
+            inputManager = inpt;
+            //inputManager = new PCInputMan(PlayerNum, AttackCount);
+            inputManager.AttacksCount = AttackCount;
         }
 	}
     void Update()
@@ -160,6 +167,7 @@ public class PlayerControl : MonoBehaviour {
         anim.SetBool("OnGround", grounded);
         anim.SetBool("Falling", falling);
         anim.SetBool("Crouch", crouch);
+        anim.SetBool("Special", inputManager.Special);
         anim.SetFloat("Movement", Mathf.Abs(horizontal));
         for (int i = 0; i < AttackCount; i++)
         {

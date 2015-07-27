@@ -7,6 +7,7 @@ public abstract class InputMan : MonoBehaviour {
     public float Vertical;
     public int AttacksCount;
     public bool[] Attacks;
+    public bool Special;
 
     //public InputMan(int attacksCount)
     //{
